@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Download Legal Parking - The smart way to pay for parking and avoid fines">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Download Legal Parking App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    
+    .container {
+      max-width: 480px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      margin: 0 0 1rem 0;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+    
+    .subtitle {
+      margin: 0 0 2rem 0;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 1rem auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .manual-options {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .manual-text {
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.875rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: 500;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+    }
+    
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .container {
+        padding: 2rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .btn {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+    <noscript>
+    <meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/id6444380250">
+  </noscript>
+</head>
+<body>
+  <div class="container">
+    <h1>Legal Parking</h1>
+    <p class="subtitle">Redirecting to your app store...</p>
+    <div class="spinner"></div>
+    
+    <div class="manual-options">
+      <p class="manual-text">Taking too long? Choose your platform:</p>
+      <a class="btn" id="iosBtn" href="https://apps.apple.com/app/id6444380250">
+        📱 App Store (iOS)
+      </a>
+      <a class="btn" id="androidBtn" href="https://play.google.com/store/apps/details?id=app.kuku.pzone">
+        🤖 Google Play (Android)
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Prevent Google's internal scripts from causing CORS errors in iframe context
+    (function() {
+      // Detect if we're in an iframe early
+      if (window.self !== window.top) {
+        // Disable some console methods that might cause issues in iframe
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        console.error = function(...args) {
+          // Filter out CORS-related errors to reduce noise
+          const message = args.join(' ').toLowerCase();
+          if (!message.includes('cors') && 
+              !message.includes('x-frame-options') &&
+              !message.includes('play.google.com/log') &&
+              !message.includes('failed to load resource')) {
+            originalError.apply(console, args);
+          }
+        };
+        
+        console.warn = function(...args) {
+          // Filter out navigation warnings
+          const message = args.join(' ').toLowerCase();
+          if (!message.includes('unsafe attempt to initiate navigation') &&
+              !message.includes('sandboxed')) {
+            originalWarn.apply(console, args);
+          }
+        };
+        
+        // Suppress window.onerror for these specific issues
+        const originalOnError = window.onerror;
+        window.onerror = function(message, source, lineno, colno, error) {
+          const msg = message ? message.toLowerCase() : '';
+          if (msg.includes('cors') || 
+              msg.includes('x-frame-options') ||
+              msg.includes('navigation') ||
+              source && source.includes('play.google.com')) {
+            return true; // Suppress the error
+          }
+          if (originalOnError) {
+            return originalOnError.apply(window, arguments);
+          }
+          return false;
+        };
+      }
+    })();
+
+    // App store URLs for Legal Parking
+    const APP_LINKS = {
+      ios: 'https://apps.apple.com/app/id6444380250',
+      android: 'https://play.google.com/store/apps/details?id=app.kuku.pzone',
+      fallback: 'https://apps.apple.com/app/id6444380250' // Default to iOS for desktop
+    };
+
+    // URL parameters for testing/debugging
+    const urlParams = new URLSearchParams(window.location.search);
+    const forcePlatform = urlParams.get('platform');
+
+    /**
+     * Detect if the user is on an iOS device
+     */
+    function isIOSDevice() {
+      const userAgent = navigator.userAgent;
+      
+      // Check for iPhone, iPad, iPod
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return true;
+      }
+      
+      // Check for iPadOS (iOS 13+ on iPad reports as Mac)
+      if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) {
+        return true;
+      }
+      
+      return false;
+    }
+
+    /**
+     * Detect if the user is on an Android device
+     */
+    function isAndroidDevice() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    /**
+     * Determine which platform the user is on
+     */
+    function detectPlatform() {
+      // Allow override via URL parameter for testing
+      if (forcePlatform === 'ios' || forcePlatform === 'android') {
+        return forcePlatform;
+      }
+      
+      if (isIOSDevice()) {
+        return 'ios';
+      }
+      
+      if (isAndroidDevice()) {
+        return 'android';
+      }
+      
+      // Default to fallback for desktop/unknown devices
+      return 'fallback';
+    }
+
+    /**
+     * Redirect to the appropriate app store
+     */
+    function redirectToStore() {
+      const platform = detectPlatform();
+      const targetUrl = APP_LINKS[platform];
+      
+      console.log(`Platform detected: ${platform}, redirecting to: ${targetUrl}`);
+      
+      try {
+        // Check if we're in an iframe (like Google Sites)
+        const isInIframe = window.self !== window.top;
+        
+        if (isInIframe) {
+          // In sandboxed iframe, we need to use window.open with user activation
+          // This works better than trying to navigate the parent
+          const newWindow = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          
+          // Check if the window was blocked
+          if (newWindow === null || typeof newWindow === 'undefined') {
+            throw new Error('Pop-up blocked');
+          }
+          
+          // If successful, hide the spinner and show success message
+          const spinner = document.querySelector('.spinner');
+          const subtitle = document.querySelector('.subtitle');
+          
+          if (spinner) {
+            spinner.style.display = 'none';
+          }
+          
+          if (subtitle) {
+            subtitle.textContent = 'App store opened in new tab!';
+          }
+        } else {
+          // Use window.location.replace to avoid back button issues
+          window.location.replace(targetUrl);
+        }
+      } catch (error) {
+        console.error('Redirect failed:', error);
+        // Fallback: try regular location change
+        try {
+          window.location.href = targetUrl;
+        } catch (fallbackError) {
+          console.error('Fallback redirect also failed:', fallbackError);
+          // Final fallback: show manual options
+          showManualOptions();
+        }
+      }
+    }
+
+    /**
+     * Show manual download options if auto-redirect fails
+     */
+    function showManualOptions() {
+      const spinner = document.querySelector('.spinner');
+      const subtitle = document.querySelector('.subtitle');
+      
+      if (spinner) {
+        spinner.style.display = 'none';
+      }
+      
+      if (subtitle) {
+        subtitle.textContent = 'Please choose your platform manually:';
+      }
+    }
+
+    // Initialize the redirect process
+    function init() {
+      // Check if we're embedded in an iframe
+      const isInIframe = window.self !== window.top;
+      
+      // Set up manual buttons with correct URLs
+      const iosBtn = document.getElementById('iosBtn');
+      const androidBtn = document.getElementById('androidBtn');
+      
+      if (iosBtn) {
+        iosBtn.href = APP_LINKS.ios;
+        iosBtn.addEventListener('click', (e) => {
+          console.log('Manual iOS download clicked');
+          
+          // If in iframe, use window.open to avoid sandboxing issues
+          if (isInIframe) {
+            e.preventDefault();
+            window.open(APP_LINKS.ios, '_blank', 'noopener,noreferrer');
+          }
+          // Otherwise, let the default href behavior work
+        });
+      }
+      
+      if (androidBtn) {
+        androidBtn.href = APP_LINKS.android;
+        androidBtn.addEventListener('click', (e) => {
+          console.log('Manual Android download clicked');
+          
+          // If in iframe, use window.open to avoid sandboxing issues
+          if (isInIframe) {
+            e.preventDefault();
+            window.open(APP_LINKS.android, '_blank', 'noopener,noreferrer');
+          }
+          // Otherwise, let the default href behavior work
+        });
+      }
+      
+      if (isInIframe) {
+        // If embedded, show a more appropriate message and shorter delay
+        const subtitle = document.querySelector('.subtitle');
+        if (subtitle) {
+          subtitle.textContent = 'Opening app store in new tab...';
+        }
+        
+        // Shorter delay for iframe context
+        setTimeout(() => {
+          redirectToStore();
+        }, 500);
+        
+        // Show manual options sooner in iframe context
+        setTimeout(() => {
+          showManualOptions();
+        }, 2000);
+      } else {
+        // Normal standalone page behavior
+        setTimeout(() => {
+          redirectToStore();
+        }, 1000);
+        
+        setTimeout(() => {
+          showManualOptions();
+        }, 5000);
+      }
+    }
+
+    // Start the process when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>
